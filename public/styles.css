@@ -1,0 +1,36 @@
+/*
+
+base color - 035086
+
+0562A3 - light blue
+0C7BC9 - lighter blue
+
+00904F - base green
+
+*/
+
+body {margin: 0; padding: 0;}
+
+ul {margin: 0; padding: 0;}
+
+.sidebar {
+  background-color: #035086;
+  display: inline-block;
+  height: 100vh;
+  width: 48px;
+  top: 0;
+  left: 0;  
+}
+
+.sidebar-item {
+  background-color: #0C7BC9;
+  font-size: 22px;
+  color: #EEE;
+  padding: 8px 13px;
+}
+
+.gl-control {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
