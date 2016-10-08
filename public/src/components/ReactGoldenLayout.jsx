@@ -1,6 +1,5 @@
 export default class ReactGoldenLayout extends React.Component {
 
-
   componentDidMount() {
 
     let config = {
@@ -40,9 +39,10 @@ export default class ReactGoldenLayout extends React.Component {
     });
 
     let container = $('#GoldenLayout');
-    console.log(container);
     
     let  myLayout = new GoldenLayout(config, container);
+
+    myLayout.on('resize', function(){console.log("myLayout.On.Resize");console.log(arguments);})
 
     myLayout.registerComponent( 'test-component', TestComponent );
 
@@ -66,7 +66,7 @@ export default class ReactGoldenLayout extends React.Component {
     myLayout.init();
 
     $(window).resize(function(){
-      myLayout.updateSize();      
+      myLayout.updateSize();
     });
     
 
