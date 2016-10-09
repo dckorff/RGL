@@ -1,3 +1,5 @@
+import RGLComponent from './RGLComponent.jsx';
+
 export default class ReactGoldenLayout extends React.Component {
 
   componentDidMount() {
@@ -8,9 +10,9 @@ export default class ReactGoldenLayout extends React.Component {
           type: 'row',
           content:[
             {
-            type:'react-component',
-            component: 'test-component',
-            props: { label: 'A' }
+              type:'react-component',
+              component: 'test-component',
+              props: { label: 'A' }
             },
             {
               type: 'column',
@@ -42,9 +44,10 @@ export default class ReactGoldenLayout extends React.Component {
     
     let  myLayout = new GoldenLayout(config, container);
 
-    myLayout.on('resize', function(){console.log("myLayout.On.Resize");console.log(arguments);})
-
     myLayout.registerComponent( 'test-component', TestComponent );
+
+    // TDOO: Decouple this from the container - maybe a service interface for registering components?
+    myLayout.registerComponent( 'RGLComponent',  RGLComponent );
 
     // TODO: if there's only 1 child 'children' will be an object instead of an array
     this.registeredComponents = [];
@@ -67,8 +70,11 @@ export default class ReactGoldenLayout extends React.Component {
 
     $(window).resize(function(){
       myLayout.updateSize();
-    });
-    
+    });    
+
+    window.myLayout = myLayout;
+
+    this.props.updateLayout(myLayout);
 
   }
 

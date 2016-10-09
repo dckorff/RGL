@@ -10,7 +10,7 @@ export default class Giphy extends React.Component {
    }
 
   handleChangeSearchTerm(event){
-    this.setState({searchTerm: event.target.value });
+    this.setState({searchTerm: event.target.value});
   }
   
   handleClickSearch(){
@@ -20,10 +20,8 @@ export default class Giphy extends React.Component {
       success: function(data){ 
         me.setState({gifs:data.data.map(item => {return item.images.fixed_width.url})});
       }
-    });
-    
+    });    
   }
-
 
   render() {
 
