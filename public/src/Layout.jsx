@@ -11,8 +11,6 @@ export default class Layout extends React.Component {
   }
 
   updateLayout(myLayout){
-    console.log("updateLayout")
-    console.log(myLayout);
     this.setState({myLayout: myLayout});
   }
 

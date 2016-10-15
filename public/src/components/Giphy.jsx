@@ -4,13 +4,17 @@ export default class Giphy extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchTerm: 'cats',
+      searchTerm: 'kittens',
       gifs: []
     };
    }
 
   handleChangeSearchTerm(event){
     this.setState({searchTerm: event.target.value});
+  }
+
+  componentDidMount(){
+    this.handleClickSearch();
   }
   
   handleClickSearch(){
@@ -20,7 +24,7 @@ export default class Giphy extends React.Component {
       success: function(data){ 
         me.setState({gifs:data.data.map(item => {return item.images.fixed_width.url})});
       }
-    });    
+    });
   }
 
   render() {
@@ -32,7 +36,7 @@ export default class Giphy extends React.Component {
             <button className="btn btn-primary" onClick={this.handleClickSearch.bind(this)}>Search</button>
           </div>
           <div>
-            {this.state.gifs.map((gif) => {return <img key={gif} src={gif} /> })}
+            {this.state.gifs.map((gif) => {return <img style={{width:'100%'}} key={gif} src={gif} /> })}
           </div>
         </div>
       );

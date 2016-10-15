@@ -3,13 +3,15 @@
 export default class RGLComponent extends React.Component {
 
   constructor(props) {
+
     super(props);
-    this.state = { element: false };
+    
+    this.state = { myElement: false };
   }
 
-  setupGL(element){
+  setupGL(myElement){
 
-    if(this.state.element || this.props.myLayout == null) { return; }    
+    if(this.state.myElement || this.props.myLayout == null) { return; }    
 
     var newItemConfig = {
         title: "RGL Component Title",
@@ -19,13 +21,15 @@ export default class RGLComponent extends React.Component {
         props: {}
     };
   
-    myLayout.createDragSource( element, newItemConfig );
-    this.setState({element: element});
+    myLayout.createDragSource(myElement, newItemConfig);
+    this.setState({myElement: myElement});
   }
 
   render(){
     return (
-      <a ref={this.setupGL.bind(this)}>asdf</a>
+      <a ref={this.setupGL.bind(this)} style={{cursor: 'pointer'}}>
+        <span className="glyphicon glyphicon-move" style={{paddingRight: '5px'}} aria-hidden="true"></span>{this.props.title}
+      </a>
     );
 
   }
