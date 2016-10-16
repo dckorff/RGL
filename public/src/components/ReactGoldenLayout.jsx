@@ -9,11 +9,6 @@ export default class ReactGoldenLayout extends React.Component {
         {
           type: 'row',
           content:[
-            // {
-            //   type:'react-component',
-            //   component: 'test-component',
-            //   props: { label: 'A' }
-            // }            
           ]
         }
       ]
@@ -46,6 +41,7 @@ export default class ReactGoldenLayout extends React.Component {
       myLayout.config.content[0].content.push({
         type: 'react-component',
         component: child.type.name,
+        title: child.props.title || child.type.name,
         props: { label: 'test' }
       });
 

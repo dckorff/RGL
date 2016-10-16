@@ -12,7 +12,7 @@ router.get('/', function(req, res) {
 
 router.get('/stock/:symbol', function(req, res){
 
-    request('https://query1.finance.yahoo.com/v7/finance/chart/' + req.params.symbol, 
+    request('https://query1.finance.yahoo.com/v7/finance/chart/' + req.params.symbol + '?range=max&period=1d', 
 
       function (error, response, body) {
         if (!error && response.statusCode == 200) {

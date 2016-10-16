@@ -22,8 +22,8 @@ export default class Layout extends React.Component {
         
         <div style={{display:'inline-block', position:'absolute', width:'100vw', height: 'calc(100vh - 54px)'}}>
           <ReactGoldenLayout myLayout={this.state.myLayout} updateLayout={this.updateLayout.bind(this)}>
-            <Giphy />        
-            <StockChart />
+            <Giphy title="Giphy Search" />        
+            <StockChart title="Market Data" />
           </ReactGoldenLayout>
         </div>
 

@@ -33,12 +33,18 @@ export default class StockChart extends React.Component {
   }
 
   getChartHeight(){
-    let height = this.props.glContainer.height-35;
+    let height = this.props.glContainer.height-35 || '100%';
     return height;
   }
 
   getChartWidth(){
-    return this.props.glContainer.width-15;
+    return this.props.glContainer.width-15 || '100%';
+  }
+
+  handleInputSearchKeyPress(event){
+    if (event.key === 'Enter') {
+      this.handleClickSearch();
+    }
   }
 
   handleClickSearch(){
@@ -52,8 +58,7 @@ export default class StockChart extends React.Component {
         
         let close = jsonResponse.chart.result[0].indicators.quote[0].close
         let times = jsonResponse.chart.result[0].timestamp
-        let data = times.map(function(item, index){ return [item, close[index]]; });
-
+        let data = times.map(function(item, index){ return [(item * 1000), close[index]]; });
         me.chart.series[0].setData(data);
         
       }
@@ -75,15 +80,11 @@ export default class StockChart extends React.Component {
             height: me.getChartHeight(),
             width: me.getChartWidth()
           },
-          rangeSelector: {
-            selected: 1
-          },
           title: {
             text: ''
           },
           series: [{
             name: '',
-            data: [],
             tooltip: {
                 valueDecimals: 2
             }
@@ -104,8 +105,15 @@ export default class StockChart extends React.Component {
     return (
       <div className="gl-control">
         <div className="form-inline">
-          <input className="form-control" type="text" value={this.state.searchTerm} onChange={this.handleChangeSearchTerm.bind(this)} />
+          
+          <input className="form-control" type="text" 
+            value={this.state.searchTerm} 
+            onKeyPress={this.handleInputSearchKeyPress.bind(this)} 
+            onChange={this.handleChangeSearchTerm.bind(this)} 
+          />
+          
           <button className="btn btn-primary" onClick={this.handleClickSearch.bind(this)}>Search</button>
+
         </div>
         <div>
           <div ref="chart" id={this.state.elementId} ></div>

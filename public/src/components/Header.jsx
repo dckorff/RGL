@@ -14,16 +14,17 @@ export default class Header extends React.Component {
               <li className="dropdown">
                 <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" style={{fontSize: '26px', padding: '11px 0px'}}>                
                   <span className="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                  <span style={{display:'inline-block', verticalAlign:'top', paddingTop:'3px'}} >Click me!</span>
                 </a>
                 <ul className="dropdown-menu">
                   <li> 
-                    <RGLComponent title="Giphy Search" myLayout={this.props.myLayout}>
-                      <Giphy />
-                    </RGLComponent> 
+                    <RGLComponent title="Giphy Search (drag me)" myLayout={this.props.myLayout}>
+                      <Giphy title="Giphy Search" />
+                    </RGLComponent>
                   </li>
                   <li> 
-                    <RGLComponent title="Market Data" myLayout={this.props.myLayout}>
-                      <StockChart />
+                    <RGLComponent title="Market Data (drag me)" myLayout={this.props.myLayout}>
+                      <StockChart title="Market Data" />
                     </RGLComponent> 
                   </li>
                 </ul>

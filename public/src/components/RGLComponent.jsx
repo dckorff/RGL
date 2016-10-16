@@ -14,7 +14,7 @@ export default class RGLComponent extends React.Component {
     if(this.state.myElement || this.props.myLayout == null) { return; }    
 
     var newItemConfig = {
-        title: "RGL Component Title",
+        title: this.props.children.props.title || this.props.children.type.name,
         type: 'react-component',
         component: this.props.children.type.name,
         componentName: 'RGLComponent',
